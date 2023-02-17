@@ -48,6 +48,8 @@ class ItemWidget extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(AppSize.s12),
               child: Container(
+                height: size.width * AppSize.s0_45,
+                width: size.width * AppSize.s0_45,
                 color: Colors.black38,
               ),
             ),

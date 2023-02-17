@@ -14,4 +14,7 @@ class IconManager {
 
   static IconData iconDanger = Icons.dangerous_outlined;
   static IconData aboutUs = IconlyBold.user2;
+
+  static const arrowLeft2Bold = IconlyBold.arrowLeft2;
+  static const arrowRight2Bold = IconlyBold.arrowRight2;
 }

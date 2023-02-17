@@ -1,4 +1,5 @@
 import 'package:egy_army_force/providers/items_provider.dart';
+import 'package:egy_army_force/resources/color_manager.dart';
 import 'package:egy_army_force/resources/string_manager.dart';
 import 'package:egy_army_force/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,14 @@ class AllItemsScreen extends StatelessWidget {
     final itemProvider = Provider.of<ItemsProvider>(context);
     final itemsList = itemProvider.getItems.reversed.toList();
     return Scaffold(
+      appBar: AppBar(
+        leading: BackButton(
+          color: ColorManager.black,
+        ),
+        title: LocaleText(
+          AppString.allPlanes,
+        ),
+      ),
       body: itemsList.isEmpty
           ? const Center(
               child: LocaleText(

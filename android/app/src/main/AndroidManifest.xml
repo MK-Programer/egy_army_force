@@ -1,9 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.egy_army_force">
    <application
-        android:label="egy_army_force"
+        android:label="EAFM"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
+        
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyAUyKMCf4V91l_AjLJuP6zr80y8wTNRd7k"/> 
+        
         <activity
             android:name=".MainActivity"
             android:exported="true"

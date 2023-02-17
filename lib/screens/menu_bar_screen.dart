@@ -1,6 +1,7 @@
 import 'package:egy_army_force/resources/icon_manager.dart';
 import 'package:egy_army_force/resources/string_manager.dart';
 import 'package:egy_army_force/screens/about_us_screen.dart';
+import 'package:egy_army_force/screens/home_screen.dart';
 import 'package:egy_army_force/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
@@ -17,13 +18,13 @@ class MenuBarScreen extends StatefulWidget {
 class _MenuBarScreenState extends State<MenuBarScreen> {
   final List<Map<String, dynamic>> _pages = [
     {
-      'title': AppString.allPlanes,
-      'body': const AllItemsScreen(),
+      'title': AppString.home,
+      'body': const HomeScreen(),
     },
-    {
-      'title': AppString.addPlane,
-      'body': const AddItemScreen(),
-    },
+    // {
+    //   'title': AppString.addPlane,
+    //   'body': const AddItemScreen(),
+    // },
     {
       'title': AppString.settings,
       'body': const SettingsScreen(),
@@ -65,10 +66,10 @@ class _MenuBarScreenState extends State<MenuBarScreen> {
             icon: Icon(IconManager.home),
             label: AppString.allPlanes.localize(context),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(IconManager.plane),
-            label: AppString.addPlane.localize(context),
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(IconManager.plane),
+          //   label: AppString.addPlane.localize(context),
+          // ),
           BottomNavigationBarItem(
             icon: Icon(IconManager.settings),
             label: AppString.settings.localize(context),

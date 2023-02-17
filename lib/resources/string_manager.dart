@@ -29,4 +29,8 @@ class AppString {
   static const String anErrorOccured = "an_error_occured";
 
   static const String aboutUsDescription = "about_description";
+  static const String home = 'home';
+  static const String explore = "explore";
+
+  static const String map_title = "map_title";
 }
