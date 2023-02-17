@@ -64,7 +64,7 @@ class _MenuBarScreenState extends State<MenuBarScreen> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(IconManager.home),
-            label: AppString.allPlanes.localize(context),
+            label: AppString.home.localize(context),
           ),
           // BottomNavigationBarItem(
           //   icon: Icon(IconManager.plane),
