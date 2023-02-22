@@ -23,5 +23,10 @@
     "about_description": "The Egyptian Air Force, a museum that includes a large collection of aircraft that belong to the Egyptian army, including the Cairo Air Force 200, the Cairo Air Force 300, and the Air Force Edition. The museum is a guided tour by plane over Egypt's landmarks from Cairo.",
     "home": "Home",
     "explore": "Explore",
-    "map_title": "Egyptian Air Force Museum"
+    "map_title": "Egyptian Air Force Museum",
+    "light_mode": "Light mode",
+    "dark_mode": "Dark mode",
+    "search": "Search...",
+    "ok": "Ok",
+    "product_uploaded_successfully": "Product uploaded successfully"
 }

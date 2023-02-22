@@ -32,5 +32,13 @@ class AppString {
   static const String home = 'home';
   static const String explore = "explore";
 
-  static const String map_title = "map_title";
+  static const String mapTitle = "map_title";
+  static const String lightMode = "light_mode";
+  static const String darkMode = "dark_mode";
+  static const String search = "search";
+
+  static const String ok = "ok";
+
+  static const String productUploadedSuccessfully =
+      "product_uploaded_successfully";
 }

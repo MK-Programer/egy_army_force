@@ -1,8 +1,10 @@
-import 'package:egy_army_force/resources/font_manager.dart';
-import 'package:egy_army_force/resources/img_manager.dart';
-import 'package:egy_army_force/resources/string_manager.dart';
-import 'package:egy_army_force/resources/values_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
+
+import '../resources/font_manager.dart';
+import '../resources/img_manager.dart';
+import '../resources/string_manager.dart';
+import '../resources/values_manager.dart';
 
 class GlobalMethods {
   static Future<void> errorDialog({
@@ -24,7 +26,7 @@ class GlobalMethods {
               const SizedBox(
                 width: AppMargin.m10,
               ),
-              const Text(AppString.anErrorOccured),
+              const LocaleText(AppString.anErrorOccured),
             ],
           ),
           content: Text(subTitle),
@@ -35,8 +37,8 @@ class GlobalMethods {
                   Navigator.pop(context);
                 }
               },
-              child: const Text(
-                'Ok',
+              child: const LocaleText(
+                AppString.ok,
                 style: TextStyle(
                   color: Colors.cyan,
                   fontSize: FontSize.s18,

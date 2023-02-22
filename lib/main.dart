@@ -1,9 +1,10 @@
-import 'package:egy_army_force/providers/items_provider.dart';
-import 'package:egy_army_force/resources/language_manager.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
+import 'providers/dark_theme_provider.dart';
+import 'providers/items_provider.dart';
+import 'resources/language_manager.dart';
 import 'resources/route_manager.dart';
 import 'resources/theme_manager.dart';
 
@@ -19,8 +20,26 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  DarkThemeProvider themeChangeProvider = DarkThemeProvider();
+
+  void getCurrentAppTheme() async {
+    themeChangeProvider.setDarkTheme =
+        await themeChangeProvider.darkThemePrefs.getTheme();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentAppTheme();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,17 +48,25 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => ItemsProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => themeChangeProvider,
+        ),
       ],
       child: LocaleBuilder(
-        builder: (locale) => MaterialApp(
-          localizationsDelegates: Locales.delegates,
-          supportedLocales: Locales.supportedLocales,
-          locale: locale,
-          debugShowCheckedModeBanner: false,
-          title: 'EGYPT ARMY FORCE',
-          theme: ThemeManager.themeData(),
-          initialRoute: Routes.fetchDataRoute,
-          onGenerateRoute: RouteGenerator.getRoute,
+        builder: (locale) => Consumer<DarkThemeProvider>(
+          builder: (context, themeProvider, child) {
+            return MaterialApp(
+              localizationsDelegates: Locales.delegates,
+              supportedLocales: Locales.supportedLocales,
+              locale: locale,
+              debugShowCheckedModeBanner: false,
+              title: 'EGYPT ARMY FORCE',
+              theme:
+                  ThemeManager.themeData(themeProvider.getDarkTheme, context),
+              initialRoute: Routes.fetchDataRoute,
+              onGenerateRoute: RouteGenerator.getRoute,
+            );
+          },
         ),
       ),
     );

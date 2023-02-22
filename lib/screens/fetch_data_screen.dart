@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../providers/items_provider.dart';
 import '../resources/route_manager.dart';
 import '../utils/global_methods.dart';
@@ -35,12 +34,10 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
           setState(() => _isLoading = false);
           GlobalMethods.errorDialog(
               subTitle: error.message.toString(), context: context);
-          print(error.message);
         } catch (error) {
           setState(() => _isLoading = false);
           GlobalMethods.errorDialog(
               subTitle: error.toString(), context: context);
-          print(error);
         } finally {
           setState(() => _isLoading = false);
         }
@@ -58,7 +55,9 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
     return Scaffold(
       body: Visibility(
         visible: _isLoading,
-        child: const Center(child: CircularProgressIndicator()),
+        child: const Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }

@@ -1,18 +1,20 @@
 import 'dart:io';
-import 'package:egy_army_force/providers/items_provider.dart';
-import 'package:egy_army_force/resources/color_manager.dart';
-import 'package:egy_army_force/resources/font_manager.dart';
-import 'package:egy_army_force/resources/icon_manager.dart';
-import 'package:egy_army_force/resources/values_manager.dart';
-import 'package:egy_army_force/utils/utils.dart';
+import 'package:egy_army_force/resources/img_manager.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../providers/items_provider.dart';
+import '../resources/color_manager.dart';
+import '../resources/font_manager.dart';
+import '../resources/icon_manager.dart';
 import '../resources/string_manager.dart';
+import '../resources/values_manager.dart';
 import '../utils/global_methods.dart';
+import '../utils/utils.dart';
 import '../widgets/loading_manager.dart';
 
 class AddItemScreen extends StatefulWidget {
@@ -75,7 +77,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
           itemDescriptionAR: _descriptionEditingControllerAR.text,
         );
         Fluttertoast.showToast(
-          msg: 'Product uploaded successfully',
+          msg: AppString.productUploadedSuccessfully,
           toastLength: Toast.LENGTH_LONG,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,
@@ -85,11 +87,9 @@ class _AddItemScreenState extends State<AddItemScreen> {
         setState(() => _isLoading = false);
         GlobalMethods.errorDialog(
             subTitle: error.message.toString(), context: context);
-        print(error.message);
       } catch (error) {
         setState(() => _isLoading = false);
         GlobalMethods.errorDialog(subTitle: error.toString(), context: context);
-        print(error);
       } finally {
         setState(() => _isLoading = false);
       }
@@ -100,7 +100,6 @@ class _AddItemScreenState extends State<AddItemScreen> {
     final pickedImage =
         await ImagePicker().pickImage(source: ImageSource.camera);
     final pickedImageFile = File(pickedImage!.path);
-    print('image from camera: $pickedImageFile');
     setState(
       () {
         _pickedImage = pickedImageFile;
@@ -114,7 +113,6 @@ class _AddItemScreenState extends State<AddItemScreen> {
     final pickedImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     final pickedImageFile = File(pickedImage!.path);
-    print('image from gallery: $pickedImageFile');
     setState(
       () {
         _pickedImage = pickedImageFile;
@@ -250,12 +248,17 @@ class _AddItemScreenState extends State<AddItemScreen> {
                         vertical: AppMargin.m30,
                         horizontal: AppMargin.m30,
                       ),
-                      child: CircleAvatar(
-                        radius: AppSize.s70,
-                        backgroundImage: _pickedImage == null
-                            ? null
-                            : FileImage(_pickedImage!),
-                      ),
+                      child: _pickedImage == null
+                          ? CircleAvatar(
+                              radius: AppSize.s70,
+                              backgroundImage: AssetImage(
+                                ImgManager.emptyBox,
+                              ),
+                            )
+                          : CircleAvatar(
+                              radius: AppSize.s70,
+                              backgroundImage: FileImage(_pickedImage!),
+                            ),
                     ),
                     Positioned(
                       top: AppSize.s120,

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/dark_theme_provider.dart';
+import '../resources/color_manager.dart';
 import '../resources/language_manager.dart';
 import '../resources/string_manager.dart';
 import '../resources/values_manager.dart';
@@ -16,6 +19,7 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
+    final themeState = Provider.of<DarkThemeProvider>(context);
     List<String> menuItems = [
       AppString.enLang,
       AppString.arLang,
@@ -47,6 +51,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             DropdownButton(
+              dropdownColor: themeState.getDarkTheme
+                  ? ColorManager.scaffoldDarkColor
+                  : ColorManager.scaffoldColor,
               isExpanded: true,
               value: currentLang,
               items: dropDownMenuItems,
@@ -60,7 +67,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       .change(LanguageType.ARABIC.getValue());
                 }
               },
-            )
+            ),
+            SwitchListTile(
+              title: LocaleText(
+                themeState.getDarkTheme
+                    ? AppString.darkMode
+                    : AppString.lightMode,
+              ),
+              secondary: Icon(
+                themeState.getDarkTheme
+                    ? Icons.dark_mode_outlined
+                    : Icons.light_mode_outlined,
+                color: themeState.getDarkTheme
+                    ? ColorManager.scaffoldColor
+                    : ColorManager.black,
+              ),
+              onChanged: (bool value) {
+                setState(
+                  () {
+                    themeState.setDarkTheme = value;
+                  },
+                );
+              },
+              value: themeState.getDarkTheme,
+            ),
           ],
         ),
       ),

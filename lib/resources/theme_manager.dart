@@ -4,37 +4,41 @@ import '../resources/font_manager.dart';
 import '../resources/values_manager.dart';
 
 class ThemeManager {
-  static ThemeData themeData() {
+  static ThemeData themeData(bool isDarkTheme, BuildContext context) {
     return ThemeData(
-      scaffoldBackgroundColor: ColorManager.scaffoldColor,
+      scaffoldBackgroundColor: isDarkTheme
+          ? ColorManager.scaffoldDarkColor
+          : ColorManager.scaffoldColor,
       appBarTheme: AppBarTheme(
-        backgroundColor: ColorManager.white,
+        backgroundColor: isDarkTheme
+            ? ColorManager.scaffoldDarkColor
+            : ColorManager.scaffoldColor,
         titleTextStyle: TextStyle(
-          color: ColorManager.black,
+          color: isDarkTheme ? ColorManager.white : ColorManager.black,
           fontSize: FontSize.s24,
           fontWeight: FontWeightManager.bold,
         ),
         elevation: AppSize.s0,
       ),
-      cardColor: ColorManager.white,
+      cardColor: isDarkTheme ? ColorManager.white : ColorManager.black,
       textTheme: TextTheme(
         titleMedium: TextStyle(
-          color: ColorManager.black,
+          color: isDarkTheme ? ColorManager.white : ColorManager.black,
           fontWeight: FontWeightManager.semiBold,
           fontSize: FontSize.s18,
         ),
         labelSmall: TextStyle(
-          color: ColorManager.black,
+          color: isDarkTheme ? ColorManager.white : ColorManager.black,
           fontWeight: FontWeightManager.bold,
           fontSize: FontSize.s20,
         ),
         headlineMedium: TextStyle(
-          color: ColorManager.black,
+          color: isDarkTheme ? ColorManager.white : ColorManager.black,
           fontWeight: FontWeightManager.bold,
           fontSize: FontSize.s20,
         ),
         bodyMedium: TextStyle(
-          color: ColorManager.black,
+          color: isDarkTheme ? ColorManager.white : ColorManager.black,
           fontWeight: FontWeightManager.normal,
           fontSize: FontSize.s18,
         ),

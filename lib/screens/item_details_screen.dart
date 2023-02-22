@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../providers/dark_theme_provider.dart';
 import '../providers/items_provider.dart';
+import '../resources/color_manager.dart';
 import '../resources/language_manager.dart';
 import '../resources/values_manager.dart';
 import '../utils/utils.dart';
@@ -15,6 +17,7 @@ class ItemDetailsScreen extends StatelessWidget {
     final itemId = ModalRoute.of(context)!.settings.arguments as String;
     final itemData = itemProvider.getItemById(id: itemId);
     String currentLang = Utils(context).getCurrentLocale;
+    final Color color = Utils(context).color;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -35,12 +38,14 @@ class ItemDetailsScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(
+                Padding(
+                  padding: const EdgeInsets.only(
                     top: AppPadding.p30,
                     left: AppPadding.p12,
                   ),
-                  child: BackButton(),
+                  child: BackButton(
+                    color: color,
+                  ),
                 ),
               ],
             ),

@@ -1,6 +1,6 @@
-import 'package:egy_army_force/resources/string_manager.dart';
-import 'package:egy_army_force/resources/values_manager.dart';
-import 'package:egy_army_force/utils/utils.dart';
+import '../resources/string_manager.dart';
+import '../resources/values_manager.dart';
+import '../utils/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +29,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
         markerId: const MarkerId('marker_1'),
         position: const LatLng(30.097455811114393, 31.351535169314122),
         infoWindow: InfoWindow(
-          title: AppString.map_title.localize(context),
+          title: AppString.mapTitle.localize(context),
         ),
       )
     };

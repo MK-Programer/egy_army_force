@@ -1,13 +1,13 @@
 import 'package:card_swiper/card_swiper.dart';
-import 'package:egy_army_force/resources/color_manager.dart';
-import 'package:egy_army_force/resources/font_manager.dart';
-import 'package:egy_army_force/resources/icon_manager.dart';
-import 'package:egy_army_force/resources/img_manager.dart';
-import 'package:egy_army_force/resources/language_manager.dart';
-import 'package:egy_army_force/resources/route_manager.dart';
-import 'package:egy_army_force/resources/string_manager.dart';
-import 'package:egy_army_force/resources/values_manager.dart';
-import 'package:egy_army_force/utils/utils.dart';
+import '../resources/color_manager.dart';
+import '../resources/font_manager.dart';
+import '../resources/icon_manager.dart';
+import '../resources/img_manager.dart';
+import '../resources/language_manager.dart';
+import '../resources/route_manager.dart';
+import '../resources/string_manager.dart';
+import '../resources/values_manager.dart';
+import '../utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
@@ -97,6 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         .toUpperCase()
                                 ? IconManager.arrowRight2Bold
                                 : IconManager.arrowLeft2Bold,
+                            color: Theme.of(context).iconTheme.color,
                           ),
                         ),
                       ),

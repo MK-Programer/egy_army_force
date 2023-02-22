@@ -4,6 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:uuid/uuid.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import '../models/items_model.dart';
+import '../resources/language_manager.dart';
+import '../resources/string_manager.dart';
+import '../utils/utils.dart';
 
 class ItemsProvider with ChangeNotifier {
   static List<ItemModel> _itemsList = [];
@@ -17,6 +20,22 @@ class ItemsProvider with ChangeNotifier {
   }) {
     // ignore: unrelated_type_equality_checks
     return _itemsList.firstWhere((element) => element.id == id);
+  }
+
+  List<ItemModel> searchQuery(String searchText, BuildContext context) {
+    String currentLang = Utils(context).getCurrentLocale ==
+            LanguageType.ENGLISH.getValue().toUpperCase()
+        ? AppString.enLang
+        : AppString.arLang;
+    return _itemsList.where((element) {
+      dynamic result = currentLang == AppString.enLang
+          ? element.itemNameEN
+          : element.itemNameAR;
+
+      return result.toLowerCase().contains(
+            searchText.toLowerCase(),
+          );
+    }).toList();
   }
 
   Future<void> fetchItems() async {
@@ -38,7 +57,6 @@ class ItemsProvider with ChangeNotifier {
         }
       },
     );
-    print(_itemsList);
     notifyListeners();
   }
 
