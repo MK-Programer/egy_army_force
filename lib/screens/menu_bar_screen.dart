@@ -1,8 +1,10 @@
-import 'package:egy_army_force/resources/icon_manager.dart';
-import 'package:egy_army_force/resources/string_manager.dart';
-import 'package:egy_army_force/screens/about_us_screen.dart';
-import 'package:egy_army_force/screens/home_screen.dart';
-import 'package:egy_army_force/screens/settings_screen.dart';
+import '../resources/color_manager.dart';
+import '../resources/icon_manager.dart';
+import '../resources/string_manager.dart';
+import '../screens/about_us_screen.dart';
+import '../screens/home_screen.dart';
+import '../screens/settings_screen.dart';
+import '../utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 
@@ -47,6 +49,7 @@ class _MenuBarScreenState extends State<MenuBarScreen> {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Utils(context).getTheme;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -56,6 +59,9 @@ class _MenuBarScreenState extends State<MenuBarScreen> {
       ),
       body: _pages[_selectedIndex]['body'],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: isDark
+            ? ColorManager.scaffoldDarkColor
+            : ColorManager.scaffoldColor,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,

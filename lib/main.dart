@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
+import 'providers/app_version_provider.dart';
 import 'providers/dark_theme_provider.dart';
 import 'providers/items_provider.dart';
 import 'resources/language_manager.dart';
@@ -50,6 +51,9 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider(
           create: (_) => themeChangeProvider,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => AppVersionProvider(),
         ),
       ],
       child: LocaleBuilder(

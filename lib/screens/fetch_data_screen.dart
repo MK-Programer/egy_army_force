@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../providers/app_version_provider.dart';
 import '../providers/items_provider.dart';
 import '../resources/route_manager.dart';
 import '../utils/global_methods.dart';
+
+final String APP_VERSION = "1.0";
 
 class FetchDataScreen extends StatefulWidget {
   const FetchDataScreen({Key? key}) : super(key: key);
@@ -22,14 +25,23 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
       () async {
         try {
           setState(() => _isLoading = true);
-          await getItems();
-          setState(() => _isLoading = false);
-          // ignore: use_build_context_synchronously
-          Navigator.pushNamedAndRemoveUntil(
-            context,
-            Routes.menubarRoute,
-            ModalRoute.withName(Routes.fetchDataRoute),
-          );
+          await getAppVersion();
+          var appVersion =
+              Provider.of<AppVersionProvider>(context, listen: false)
+                  .getAppVersion;
+          print(appVersion.version != APP_VERSION);
+          if (appVersion.version != APP_VERSION) {
+            return throw appVersion.appUrl;
+          } else {
+            await await getItems();
+            setState(() => _isLoading = false);
+            // ignore: use_build_context_synchronously
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              Routes.menubarRoute,
+              ModalRoute.withName(Routes.fetchDataRoute),
+            );
+          }
         } on FirebaseException catch (error) {
           setState(() => _isLoading = false);
           GlobalMethods.errorDialog(
@@ -48,6 +60,11 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
 
   getItems() async {
     await Provider.of<ItemsProvider>(context, listen: false).fetchItems();
+  }
+
+  getAppVersion() async {
+    await Provider.of<AppVersionProvider>(context, listen: false)
+        .fetchAppVersion();
   }
 
   @override
