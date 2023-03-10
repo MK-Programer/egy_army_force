@@ -1,13 +1,12 @@
 import 'dart:io';
-import 'package:egy_army_force/resources/img_manager.dart';
-
+import '../providers/activities_provider.dart';
+import '../resources/img_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../providers/items_provider.dart';
 import '../resources/color_manager.dart';
 import '../resources/font_manager.dart';
 import '../resources/icon_manager.dart';
@@ -17,14 +16,14 @@ import '../utils/global_methods.dart';
 import '../utils/utils.dart';
 import '../widgets/loading_manager.dart';
 
-class AddItemScreen extends StatefulWidget {
-  const AddItemScreen({Key? key}) : super(key: key);
+class AddActivitiesScreen extends StatefulWidget {
+  const AddActivitiesScreen({Key? key}) : super(key: key);
 
   @override
-  State<AddItemScreen> createState() => _AddItemScreenState();
+  State<AddActivitiesScreen> createState() => _AddActivitiesScreenState();
 }
 
-class _AddItemScreenState extends State<AddItemScreen> {
+class _AddActivitiesScreenState extends State<AddActivitiesScreen> {
   final TextEditingController _titleEditingControllerEN =
       TextEditingController();
   final TextEditingController _descriptionEditingControllerEN =
@@ -66,7 +65,8 @@ class _AddItemScreenState extends State<AddItemScreen> {
     FocusScope.of(context).unfocus();
     if (isValid) {
       _formKey.currentState!.save();
-      final itemProvider = Provider.of<ItemsProvider>(context, listen: false);
+      final itemProvider =
+          Provider.of<ActivitiesProvider>(context, listen: false);
       try {
         setState(() => _isLoading = true);
         itemProvider.addItem(
@@ -77,7 +77,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
           itemDescriptionAR: _descriptionEditingControllerAR.text,
         );
         Fluttertoast.showToast(
-          msg: AppString.productUploadedSuccessfully.localize(context),
+          msg: AppString.activityUploadedSuccessfully.localize(context),
           toastLength: Toast.LENGTH_LONG,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,
@@ -280,7 +280,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                         onPressed: () {
                           _showGalleryCameraPopupDialog();
                         },
-                        child: Icon(IconManager.gallery),
+                        child: const Icon(IconManager.gallery),
                       ),
                     )
                   ],
@@ -294,7 +294,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                         controller: _titleEditingControllerEN,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return AppString.enterPlaneNameError
+                            return AppString.enterActivityNameError
                                 .localize(context);
                           } else {
                             return null;
@@ -305,7 +305,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                         onEditingComplete: () => FocusScope.of(context)
                             .requestFocus(_descriptionFocusNodeEN),
                         decoration: inputDecoration.copyWith(
-                          labelText: AppString.planeNameEN.localize(context),
+                          labelText: AppString.activityNameEN.localize(context),
                         ),
                       ),
                       SizedBox(
@@ -317,7 +317,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                         controller: _descriptionEditingControllerEN,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return AppString.enterPlaneDescriptionError
+                            return AppString.enterActivityDescriptionError
                                 .localize(context);
                           } else {
                             return null;
@@ -329,7 +329,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                             .requestFocus(_titleFocusNodeAR),
                         decoration: inputDecoration.copyWith(
                           labelText:
-                              AppString.planeDescriptionEN.localize(context),
+                              AppString.activityDescriptionEN.localize(context),
                         ),
                       ),
                       SizedBox(
@@ -340,7 +340,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                         controller: _titleEditingControllerAR,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return AppString.enterPlaneNameError
+                            return AppString.enterActivityNameError
                                 .localize(context);
                           } else {
                             return null;
@@ -351,7 +351,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                         onEditingComplete: () => FocusScope.of(context)
                             .requestFocus(_descriptionFocusNodeAR),
                         decoration: inputDecoration.copyWith(
-                          labelText: AppString.planeNameAR.localize(context),
+                          labelText: AppString.activityNameAR.localize(context),
                         ),
                       ),
                       SizedBox(
@@ -363,7 +363,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                         controller: _descriptionEditingControllerAR,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return AppString.enterPlaneDescriptionError
+                            return AppString.enterActivityDescriptionError
                                 .localize(context);
                           } else {
                             return null;
@@ -376,7 +376,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                         },
                         decoration: inputDecoration.copyWith(
                           labelText:
-                              AppString.planeDescriptionAR.localize(context),
+                              AppString.activityDescriptionAR.localize(context),
                         ),
                       ),
                       SizedBox(

@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
 import '../providers/app_version_provider.dart';
 import '../providers/items_provider.dart';
 import '../resources/route_manager.dart';
+import '../resources/string_manager.dart';
 import '../utils/global_methods.dart';
 
 final String APP_VERSION = "1.0";
@@ -17,6 +19,7 @@ class FetchDataScreen extends StatefulWidget {
 
 class _FetchDataScreenState extends State<FetchDataScreen> {
   bool _isLoading = false;
+  String errorString = AppString.empty;
 
   @override
   void initState() {
@@ -29,9 +32,10 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
           var appVersion =
               Provider.of<AppVersionProvider>(context, listen: false)
                   .getAppVersion;
-          print(appVersion.version != APP_VERSION);
+          // print(appVersion.version != APP_VERSION);
           if (appVersion.version != APP_VERSION) {
-            return throw appVersion.appUrl;
+            errorString = AppString.anErrorOccured;
+            throw appVersion.appUrl;
           } else {
             await await getItems();
             setState(() => _isLoading = false);
@@ -70,12 +74,18 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Visibility(
-        visible: _isLoading,
-        child: const Center(
-          child: CircularProgressIndicator(),
-        ),
-      ),
+      body: errorString != AppString.empty
+          ? Center(
+              child: LocaleText(
+                errorString,
+              ),
+            )
+          : Visibility(
+              visible: _isLoading,
+              child: const Center(
+                child: CircularProgressIndicator(),
+              ),
+            ),
     );
   }
 }

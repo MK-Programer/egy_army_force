@@ -102,7 +102,7 @@ class _AllItemsScreenState extends State<AllItemsScreen> {
             ),
           ),
           _searchTextController.text.isNotEmpty && _itemProductSearch.isEmpty
-              ? Center(
+              ? const Center(
                   child: Text(
                     'No products found, please try another keyword',
                   ),

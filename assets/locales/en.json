@@ -28,5 +28,17 @@
     "dark_mode": "Dark mode",
     "search": "Search...",
     "ok": "Ok",
-    "product_uploaded_successfully": "Product uploaded successfully"
+    "product_uploaded_successfully": "Product uploaded successfully",
+    "could_not_launch": "Could not launch",
+    "download_latest_version": "Please, download the latest version",
+    "view_all": "View All",
+    "activity_name_en": "Activity name in english",
+    "activity_description_en": "Activity description in english",
+    "activity_name_ar": "Activity name in arabic",
+    "activity_description_ar": "Activity description in arabic",
+    "activity_name_error": "Please, enter the activity name",
+    "activity_description_error": "Please, enter the activity descritpion",
+    "add_activity": "Add Activity",
+    "activity_uploaded_successfully": "Activity uploaded successfully",
+    "go_to_this_link": "Please, download the latest version"
 }

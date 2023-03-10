@@ -1,3 +1,5 @@
+import 'package:egy_army_force/screens/add_activities_screen.dart';
+
 import '../resources/color_manager.dart';
 import '../resources/icon_manager.dart';
 import '../resources/string_manager.dart';
@@ -23,10 +25,14 @@ class _MenuBarScreenState extends State<MenuBarScreen> {
       'title': AppString.home,
       'body': const HomeScreen(),
     },
-    // {
-    //   'title': AppString.addPlane,
-    //   'body': const AddItemScreen(),
-    // },
+    {
+      'title': AppString.addPlane,
+      'body': const AddItemScreen(),
+    },
+    {
+      'title': AppString.addActivity,
+      'body': const AddActivitiesScreen(),
+    },
     {
       'title': AppString.settings,
       'body': const SettingsScreen(),
@@ -59,6 +65,9 @@ class _MenuBarScreenState extends State<MenuBarScreen> {
       ),
       body: _pages[_selectedIndex]['body'],
       bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: isDark ? ColorManager.white10 : ColorManager.grey,
+        selectedItemColor:
+            isDark ? ColorManager.lightBlue200 : ColorManager.black87,
         backgroundColor: isDark
             ? ColorManager.scaffoldDarkColor
             : ColorManager.scaffoldColor,
@@ -72,10 +81,14 @@ class _MenuBarScreenState extends State<MenuBarScreen> {
             icon: Icon(IconManager.home),
             label: AppString.home.localize(context),
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(IconManager.plane),
-          //   label: AppString.addPlane.localize(context),
-          // ),
+          BottomNavigationBarItem(
+            icon: Icon(IconManager.plane),
+            label: AppString.addPlane.localize(context),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(IconManager.activities),
+            label: AppString.addActivity.localize(context),
+          ),
           BottomNavigationBarItem(
             icon: Icon(IconManager.settings),
             label: AppString.settings.localize(context),

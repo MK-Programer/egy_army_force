@@ -1,7 +1,8 @@
-import 'package:egy_army_force/screens/add_item_screen.dart';
-import 'package:egy_army_force/screens/all_items_screen.dart';
-import 'package:egy_army_force/screens/fetch_data_screen.dart';
-import 'package:egy_army_force/screens/menu_bar_screen.dart';
+import '../screens/add_item_screen.dart';
+import '../screens/all_activities_screen.dart';
+import '../screens/all_items_screen.dart';
+import '../screens/fetch_data_screen.dart';
+import '../screens/menu_bar_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import '../screens/item_details_screen.dart';
@@ -13,6 +14,7 @@ class Routes {
   static const String addItemRoute = '/AddItem';
   static const String allItemsRoute = '/AllItems';
   static const String itemDetailsRoute = '/ItemDetails';
+  static const String viewAllActivitiesRoute = '/AllActivities';
 }
 
 class RouteGenerator {
@@ -38,6 +40,10 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => const ItemDetailsScreen(),
+        );
+      case Routes.viewAllActivitiesRoute:
+        return MaterialPageRoute(
+          builder: (_) => const AllActivitiesScreen(),
         );
 
       default:

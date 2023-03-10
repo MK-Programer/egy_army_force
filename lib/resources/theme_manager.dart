@@ -6,6 +6,7 @@ import '../resources/values_manager.dart';
 class ThemeManager {
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
     return ThemeData(
+      fontFamily: FontsFamily.amiri,
       scaffoldBackgroundColor: isDarkTheme
           ? ColorManager.scaffoldDarkColor
           : ColorManager.scaffoldColor,
@@ -39,6 +40,11 @@ class ThemeManager {
         ),
         bodyMedium: TextStyle(
           color: isDarkTheme ? ColorManager.white : ColorManager.black,
+          fontWeight: FontWeightManager.normal,
+          fontSize: FontSize.s18,
+        ),
+        bodySmall: TextStyle(
+          color: ColorManager.black,
           fontWeight: FontWeightManager.normal,
           fontSize: FontSize.s18,
         ),

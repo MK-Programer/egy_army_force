@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+class FontsFamily {
+  static const String amiri = 'Amiri';
+}
+
 class FontWeightManager {
   static const FontWeight normal = FontWeight.normal;
   static const FontWeight semiBold = FontWeight.w500;

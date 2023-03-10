@@ -41,4 +41,22 @@ class AppString {
 
   static const String productUploadedSuccessfully =
       "product_uploaded_successfully";
+
+  static const String couldNotLaunch = "could_not_launch";
+  static const String downloadLatestVersion = "download_latest_version";
+
+  static const String viewAll = 'view_all';
+
+  static String activityNameEN = 'activity_name_en';
+  static String activityDescriptionEN = 'activity_description_en';
+
+  static String activityNameAR = 'activity_name_ar';
+  static String activityDescriptionAR = 'activity_description_ar';
+
+  static String enterActivityNameError = 'activity_name_error';
+  static String enterActivityDescriptionError = 'activity_description_error';
+  static String addActivity = 'add_activity';
+  static const String activityUploadedSuccessfully =
+      "activity_uploaded_successfully";
+  static const String goToThisLink = "go_to_this_link";
 }

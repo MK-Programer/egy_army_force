@@ -1,3 +1,4 @@
+import '../providers/activities_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
@@ -54,6 +55,9 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider(
           create: (_) => AppVersionProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ActivitiesProvider(),
         ),
       ],
       child: LocaleBuilder(

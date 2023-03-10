@@ -1,17 +1,17 @@
 {
-    "no_route_found": "لا يوجد مسار بهذا الأسم",
+    "no_route_found": "لا يوجد مسار بهذا الاسم",
     "choose_option": "أختر خيار",
     "camera": "الكاميرا",
     "gallery": "ألبوم الصور",
     "remove": "حذف",
 
-    "plane_name_en": "أسم الطائرة بالغة الأنجليزية",
+    "plane_name_en": "اسم الطائرة بالغة الأنجليزية",
     "plane_description_en": "وصف الطائرة باللغة الأنجليزية",
 
-    "plane_name_ar": "أسم الطائرة بالغة العربية",
+    "plane_name_ar": "اسم الطائرة بالغة العربية",
     "plane_description_ar": "وصف الطائرة باللغة العربية",
 
-    "plane_name_error": "رجاءا ,قم بأدخال أسم الطائرة",
+    "plane_name_error": "رجاءا ,قم بأدخال اسم الطائرة",
     "plane_description_error": "رجاءا ,قم بأدخال وصف الطائرة",
     "upload": "تحميل",
     "add_plane": "اضافة طائرة",
@@ -31,5 +31,17 @@
     "dark_mode": "الوضع المسائي",
     "search": "بحث...",
     "ok": "تم",
-    "product_uploaded_successfully": "تم تحميل المنتج بنجاح"
+    "product_uploaded_successfully": "تم تحميل المنتج بنجاح",
+    "could_not_launch": "لم يستطع فتح الرابط",
+    "download_latest_version": "برجاء تحميل أخر نسخة",
+    "view_all": "عرض الكل",
+    "activity_name_en": "اسم النشاط باللغة الأنجليزية",
+    "activity_description_en": "وصف النشاط باللغة الأنجليزية",
+    "activity_name_ar": "اسم النشاط باللغة العربية",
+    "activity_description_ar": "وصف النشاط باللغة العربية",
+    "activity_name_error": "برجاء أدخال اسم النشاط",
+    "activity_description_error": "برجاء أدخال وصف النشاط",
+    "add_activity": "أضافة نشاط",
+    "activity_uploaded_successfully": "تم رفع النشاط",
+    "go_to_this_link": "برجاء تحميل أخر نسخة"
 }

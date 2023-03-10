@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../resources/color_manager.dart';
 import '../resources/font_manager.dart';
 import '../resources/img_manager.dart';
 import '../resources/string_manager.dart';
@@ -29,7 +31,38 @@ class GlobalMethods {
               const LocaleText(AppString.anErrorOccured),
             ],
           ),
-          content: Text(subTitle),
+          content: subTitle.contains('http') || subTitle.contains('https')
+              ? Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    LocaleText(
+                      AppString.goToThisLink,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineMedium!
+                          .copyWith(color: ColorManager.black),
+                    ),
+                    InkWell(
+                      onTap: () async {
+                        await launchUrl(Uri.parse(subTitle));
+                      },
+                      child: Text(
+                        subTitle,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium!
+                            .copyWith(color: ColorManager.black),
+                      ),
+                    ),
+                  ],
+                )
+              : Text(
+                  subTitle,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(color: ColorManager.black),
+                ),
           actions: [
             TextButton(
               onPressed: () {
