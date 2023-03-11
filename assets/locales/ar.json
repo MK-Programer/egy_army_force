@@ -14,7 +14,7 @@
     "plane_name_error": "رجاءا ,قم بأدخال اسم الطائرة",
     "plane_description_error": "رجاءا ,قم بأدخال وصف الطائرة",
     "upload": "تحميل",
-    "add_plane": "اضافة طائرة",
+    "add_plane": "أضافة طائرة",
     "all_planes": "جميع الطائرات",
     "settings": "الأعدادات",
     "choose_lang": "أختر لغة",
@@ -43,5 +43,8 @@
     "activity_description_error": "برجاء أدخال وصف النشاط",
     "add_activity": "أضافة نشاط",
     "activity_uploaded_successfully": "تم رفع النشاط",
-    "go_to_this_link": "برجاء تحميل أخر نسخة"
+    "go_to_this_link": "برجاء تحميل أخر نسخة",
+    "all_activities": "جميع الأنشطة",
+    "comm_with_admin": "برجاء التواصل مع المسؤل",
+    "check_internet_connection": "برجاء التحقق من الأتصال بالأنترنت"
 }

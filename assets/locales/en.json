@@ -40,5 +40,8 @@
     "activity_description_error": "Please, enter the activity descritpion",
     "add_activity": "Add Activity",
     "activity_uploaded_successfully": "Activity uploaded successfully",
-    "go_to_this_link": "Please, download the latest version"
+    "go_to_this_link": "Please, download the latest version",
+    "all_activities": "All Activities",
+    "comm_with_admin": "Please, Contact your adminstrator",
+    "check_internet_connection": "Please, Check your internet connection"
 }
