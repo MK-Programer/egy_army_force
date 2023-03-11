@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../providers/activities_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
@@ -37,7 +39,8 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
             errorString = AppString.anErrorOccured;
             throw appVersion.appUrl;
           } else {
-            await await getItems();
+            await getItems();
+            await getActivities();
             setState(() => _isLoading = false);
             // ignore: use_build_context_synchronously
             Navigator.pushNamedAndRemoveUntil(
@@ -47,13 +50,20 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
             );
           }
         } on FirebaseException catch (error) {
+          errorString = AppString.communicateWithTheAdmin;
           setState(() => _isLoading = false);
-          GlobalMethods.errorDialog(
-              subTitle: error.message.toString(), context: context);
+          GlobalMethods.errorDialog(subTitle: errorString, context: context);
+          return;
+        } on SocketException {
+          // Internet connection error
+          errorString = AppString.checkInternetConnection;
+          setState(() => _isLoading = false);
+          GlobalMethods.errorDialog(subTitle: errorString, context: context);
+          return;
         } catch (error) {
+          errorString = AppString.anErrorOccured;
           setState(() => _isLoading = false);
-          GlobalMethods.errorDialog(
-              subTitle: error.toString(), context: context);
+          GlobalMethods.errorDialog(subTitle: errorString, context: context);
         } finally {
           setState(() => _isLoading = false);
         }
@@ -69,6 +79,10 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
   getAppVersion() async {
     await Provider.of<AppVersionProvider>(context, listen: false)
         .fetchAppVersion();
+  }
+
+  getActivities() async {
+    await Provider.of<ActivitiesProvider>(context, listen: false).fetchItems();
   }
 
   @override

@@ -1,4 +1,6 @@
 import 'package:card_swiper/card_swiper.dart';
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
+import '../providers/activities_provider.dart';
 import '../resources/color_manager.dart';
 import '../resources/font_manager.dart';
 import '../resources/icon_manager.dart';
@@ -23,18 +25,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<String> _landingImages = [
-    ImgManager.landing1,
-    ImgManager.landing2,
-    ImgManager.landing3,
-    ImgManager.landing4,
-  ];
   @override
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
     String currentLang = Utils(context).getCurrentLocale;
     final itemProvider = Provider.of<ItemsProvider>(context);
+    final activitiesProvider = Provider.of<ActivitiesProvider>(context);
     final itemsList = itemProvider.getItems.reversed.toList();
+    final activitiesList = activitiesProvider.getItems;
     return Column(
       children: [
         SizedBox(
@@ -42,15 +40,25 @@ class _HomeScreenState extends State<HomeScreen> {
           height: size.height * AppSize.s0_35,
           child: Swiper(
             itemBuilder: (BuildContext context, int index) {
-              return Image.asset(
-                _landingImages[index],
-                fit: BoxFit.fill,
+              return Stack(
+                fit: StackFit.expand,
+                children: [
+                  FancyShimmerImage(
+                    imageUrl: activitiesList[index].imageUrl,
+                    errorWidget: Icon(
+                      IconManager.iconDanger,
+                      color: ColorManager.red,
+                      size: AppSize.s20,
+                    ),
+                    boxFit: BoxFit.cover,
+                  ),
+                ],
               );
             },
             autoplay: true,
             duration: AppSize.s800.toInt(),
             autoplayDelay: AppSize.s8000.toInt(),
-            itemCount: _landingImages.length,
+            itemCount: activitiesList.length > 4 ? 4 : activitiesList.length,
             pagination: SwiperPagination(
               alignment: Alignment.bottomCenter,
               builder: DotSwiperPaginationBuilder(

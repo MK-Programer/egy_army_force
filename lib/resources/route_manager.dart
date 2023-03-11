@@ -34,6 +34,7 @@ class RouteGenerator {
         );
       case Routes.allItemsRoute:
         return MaterialPageRoute(
+          settings: settings,
           builder: (_) => const AllItemsScreen(),
         );
       case Routes.itemDetailsRoute:
@@ -43,6 +44,7 @@ class RouteGenerator {
         );
       case Routes.viewAllActivitiesRoute:
         return MaterialPageRoute(
+          settings: settings,
           builder: (_) => const AllActivitiesScreen(),
         );
 

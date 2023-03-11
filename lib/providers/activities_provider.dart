@@ -20,7 +20,11 @@ class ActivitiesProvider with ChangeNotifier {
   }
 
   Future<void> fetchItems() async {
-    await FirebaseFirestore.instance.collection('items').get().then(
+    await FirebaseFirestore.instance
+        .collection('activities')
+        .orderBy('createdAt')
+        .get()
+        .then(
       (QuerySnapshot itemSnapshot) {
         _itemsList = [];
         for (var element in itemSnapshot.docs) {

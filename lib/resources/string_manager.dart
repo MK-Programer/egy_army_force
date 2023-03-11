@@ -59,4 +59,7 @@ class AppString {
   static const String activityUploadedSuccessfully =
       "activity_uploaded_successfully";
   static const String goToThisLink = "go_to_this_link";
+  static const String allActivities = "all_activities";
+  static const String communicateWithTheAdmin = "comm_with_admin";
+  static const String checkInternetConnection = "check_internet_connection";
 }

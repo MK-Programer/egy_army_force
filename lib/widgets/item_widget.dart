@@ -3,7 +3,6 @@ import '../../resources/route_manager.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../resources/color_manager.dart';
 import '../resources/icon_manager.dart';
 import '../resources/language_manager.dart';
@@ -18,6 +17,7 @@ class ItemWidget extends StatelessWidget {
     Size size = Utils(context).getScreenSize;
     final itemModel = Provider.of<ItemModel>(context);
     String currentLang = Utils(context).getCurrentLocale;
+    dynamic comeFrom = ModalRoute.of(context)!.settings.name;
     return Padding(
       padding: const EdgeInsets.all(AppPadding.p8),
       child: InkWell(
@@ -26,7 +26,10 @@ class ItemWidget extends StatelessWidget {
           Navigator.pushNamed(
             context,
             Routes.itemDetailsRoute,
-            arguments: itemModel.id,
+            arguments: {
+              'itemId': itemModel.id,
+              'routeName': comeFrom,
+            },
           );
         },
         child: Stack(

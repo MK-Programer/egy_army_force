@@ -34,6 +34,8 @@ class GlobalMethods {
           content: subTitle.contains('http') || subTitle.contains('https')
               ? Column(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     LocaleText(
                       AppString.goToThisLink,

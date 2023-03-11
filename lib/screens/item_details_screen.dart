@@ -1,8 +1,8 @@
+import 'package:egy_army_force/resources/route_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/dark_theme_provider.dart';
+import '../providers/activities_provider.dart';
 import '../providers/items_provider.dart';
-import '../resources/color_manager.dart';
 import '../resources/language_manager.dart';
 import '../resources/values_manager.dart';
 import '../utils/utils.dart';
@@ -13,8 +13,13 @@ class ItemDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
-    final itemProvider = Provider.of<ItemsProvider>(context);
-    final itemId = ModalRoute.of(context)!.settings.arguments as String;
+    final map =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    final itemId = map['itemId']!;
+    final routeName = map['routeName'] ?? Routes.allItemsRoute;
+    final dynamic itemProvider = routeName == Routes.allItemsRoute
+        ? Provider.of<ItemsProvider>(context)
+        : Provider.of<ActivitiesProvider>(context);
     final itemData = itemProvider.getItemById(id: itemId);
     String currentLang = Utils(context).getCurrentLocale;
     final Color color = Utils(context).color;

@@ -1,3 +1,5 @@
+import '../widgets/app_bar_widget.dart';
+
 import '../models/items_model.dart';
 import '../utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -32,17 +34,11 @@ class _AllItemsScreenState extends State<AllItemsScreen> {
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
     final Color color = Utils(context).color;
+
     final itemProvider = Provider.of<ItemsProvider>(context);
     final itemsList = itemProvider.getItems.reversed.toList();
-    return Scaffold(
-      appBar: AppBar(
-        leading: BackButton(
-          color: color,
-        ),
-        title: LocaleText(
-          AppString.allPlanes,
-        ),
-      ),
+    return AppBarWidget(
+      title: AppString.allPlanes,
       body: ListView(
         children: [
           Padding(
@@ -61,14 +57,14 @@ class _AllItemsScreenState extends State<AllItemsScreen> {
               },
               decoration: InputDecoration(
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(AppSize.s12),
                   borderSide: const BorderSide(
                     color: Colors.greenAccent,
                     width: 1,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(AppSize.s12),
                   borderSide: const BorderSide(
                     color: Colors.greenAccent,
                     width: 1,

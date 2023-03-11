@@ -25,14 +25,14 @@ class _MenuBarScreenState extends State<MenuBarScreen> {
       'title': AppString.home,
       'body': const HomeScreen(),
     },
-    {
-      'title': AppString.addPlane,
-      'body': const AddItemScreen(),
-    },
-    {
-      'title': AppString.addActivity,
-      'body': const AddActivitiesScreen(),
-    },
+    // {
+    //   'title': AppString.addPlane,
+    //   'body': const AddItemScreen(),
+    // },
+    // {
+    //   'title': AppString.addActivity,
+    //   'body': const AddActivitiesScreen(),
+    // },
     {
       'title': AppString.settings,
       'body': const SettingsScreen(),
@@ -78,23 +78,23 @@ class _MenuBarScreenState extends State<MenuBarScreen> {
         currentIndex: _selectedIndex,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(IconManager.home),
+            icon: const Icon(IconManager.home),
             label: AppString.home.localize(context),
           ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(IconManager.plane),
+          //   label: AppString.addPlane.localize(context),
+          // ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(IconManager.activities),
+          //   label: AppString.addActivity.localize(context),
+          // ),
           BottomNavigationBarItem(
-            icon: Icon(IconManager.plane),
-            label: AppString.addPlane.localize(context),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(IconManager.activities),
-            label: AppString.addActivity.localize(context),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(IconManager.settings),
+            icon: const Icon(IconManager.settings),
             label: AppString.settings.localize(context),
           ),
           BottomNavigationBarItem(
-            icon: Icon(IconManager.aboutUs),
+            icon: const Icon(IconManager.aboutUs),
             label: AppString.aboutUs.localize(context),
           ),
         ],
