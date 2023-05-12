@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class ItemModel with ChangeNotifier {
   final String id;
-  final String imageUrl;
+  final List<dynamic> imageUrl;
   final String itemNameEN;
   final String itemDescriptionEN;
 

@@ -1,6 +1,6 @@
-import '../resources/string_manager.dart';
-import '../resources/values_manager.dart';
-import '../utils/utils.dart';
+import '../../../resources/string_manager.dart';
+import '../../../resources/values_manager.dart';
+import '../../../utils/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

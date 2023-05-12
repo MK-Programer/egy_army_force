@@ -43,5 +43,8 @@
     "go_to_this_link": "Please, download the latest version",
     "all_activities": "All Activities",
     "comm_with_admin": "Please, Contact your adminstrator",
-    "check_internet_connection": "Please, Check your internet connection"
+    "check_internet_connection": "Please, Check your internet connection",
+    "play_stop": "Play/Stop",
+    "nothing_selected": "Nothing is selected",
+    "all": "All"
 }

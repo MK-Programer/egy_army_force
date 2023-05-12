@@ -7,15 +7,15 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../providers/items_provider.dart';
-import '../resources/color_manager.dart';
-import '../resources/font_manager.dart';
-import '../resources/icon_manager.dart';
-import '../resources/string_manager.dart';
-import '../resources/values_manager.dart';
-import '../utils/global_methods.dart';
-import '../utils/utils.dart';
-import '../widgets/loading_manager.dart';
+import '../../../providers/items_provider.dart';
+import '../../../resources/color_manager.dart';
+import '../../../resources/font_manager.dart';
+import '../../../resources/icon_manager.dart';
+import '../../../resources/string_manager.dart';
+import '../../../resources/values_manager.dart';
+import '../../../utils/global_methods.dart';
+import '../../../utils/utils.dart';
+import '../../../widgets/loading_manager.dart';
 
 class AddItemScreen extends StatefulWidget {
   const AddItemScreen({Key? key}) : super(key: key);
@@ -41,7 +41,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
   final FocusNode _titleFocusNodeAR = FocusNode();
   final FocusNode _descriptionFocusNodeAR = FocusNode();
 
-  File? _pickedImage;
+  List<File> _pickedImage = [];
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -70,7 +70,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
       try {
         setState(() => _isLoading = true);
         itemProvider.addItem(
-          imageUrl: _pickedImage!,
+          imageUrl: _pickedImage,
           itemNameEN: _titleEditingControllerEN.text,
           itemDescriptionEN: _descriptionEditingControllerEN.text,
           itemNameAR: _titleEditingControllerAR.text,
@@ -96,28 +96,52 @@ class _AddItemScreenState extends State<AddItemScreen> {
     }
   }
 
-  void _pickImageCamera() async {
-    final pickedImage =
-        await ImagePicker().pickImage(source: ImageSource.camera);
-    final pickedImageFile = File(pickedImage!.path);
-    setState(
-      () {
-        _pickedImage = pickedImageFile;
-      },
-    );
-    // ignore: use_build_context_synchronously
-    Navigator.pop(context);
-  }
+  // void _pickImageCamera() async {
+  //   final pickedImage =
+  //       await ImagePicker().pickImage(source: ImageSource.camera);
+  //   final pickedImageFile = File(pickedImage!.path);
+  //   setState(
+  //     () {
+  //       _pickedImage = pickedImageFile;
+  //     },
+  //   );
+  //   // ignore: use_build_context_synchronously
+  //   Navigator.pop(context);
+  // }
 
   void _pickImageGallery() async {
-    final pickedImage =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
-    final pickedImageFile = File(pickedImage!.path);
-    setState(
-      () {
-        _pickedImage = pickedImageFile;
-      },
-    );
+    final pickedImage = await ImagePicker().pickMultiImage();
+
+    // if atleast 1 images is selected it will add
+    // all images in selectedImages
+    // variable so that we can easily show them in UI
+    // ignore: unnecessary_null_comparison
+    if (pickedImage.isNotEmpty) {
+      for (var i = 0; i < pickedImage.length; i++) {
+        _pickedImage.add(File(pickedImage[i].path));
+      }
+      setState(
+        () {},
+      );
+    } else {
+      // If no image is selected it will show a
+      // snackbar saying nothing is selected
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: LocaleText(
+            AppString.nothing_selected,
+          ),
+        ),
+      );
+    }
+
+    // final pickedImageFile = File(pickedImage!.path);
+    // setState(
+    //   () {
+    //     _pickedImage = pickedImageFile;
+    //   },
+    // );
     // ignore: use_build_context_synchronously
     Navigator.pop(context);
   }
@@ -127,13 +151,13 @@ class _AddItemScreenState extends State<AddItemScreen> {
     _descriptionEditingControllerEN.clear();
     _titleEditingControllerAR.clear();
     _descriptionEditingControllerAR.clear();
-    _pickedImage = null;
+    _pickedImage.clear();
   }
 
   void _remove() {
     setState(
       () {
-        _pickedImage = null;
+        _pickedImage.clear();
       },
     );
     Navigator.pop(context);
@@ -154,28 +178,28 @@ class _AddItemScreenState extends State<AddItemScreen> {
           content: SingleChildScrollView(
             child: ListBody(
               children: [
-                InkWell(
-                  onTap: _pickImageCamera,
-                  splashColor: ColorManager.grey,
-                  child: Row(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.all(AppPadding.p8),
-                        child: Icon(
-                          IconManager.camera,
-                          color: ColorManager.grey,
-                        ),
-                      ),
-                      LocaleText(
-                        AppString.camera,
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium!
-                            .copyWith(color: ColorManager.black),
-                      )
-                    ],
-                  ),
-                ),
+                // InkWell(
+                //   onTap: _pickImageCamera,
+                //   splashColor: ColorManager.grey,
+                //   child: Row(
+                //     children: [
+                //       const Padding(
+                //         padding: EdgeInsets.all(AppPadding.p8),
+                //         child: Icon(
+                //           IconManager.camera,
+                //           color: ColorManager.grey,
+                //         ),
+                //       ),
+                //       LocaleText(
+                //         AppString.camera,
+                //         style: Theme.of(context)
+                //             .textTheme
+                //             .titleMedium!
+                //             .copyWith(color: ColorManager.black),
+                //       )
+                //     ],
+                //   ),
+                // ),
                 InkWell(
                   onTap: _pickImageGallery,
                   splashColor: ColorManager.grey,
@@ -257,7 +281,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                         vertical: AppMargin.m30,
                         horizontal: AppMargin.m30,
                       ),
-                      child: _pickedImage == null
+                      child: _pickedImage.isEmpty
                           ? CircleAvatar(
                               radius: AppSize.s70,
                               backgroundImage: AssetImage(
@@ -266,7 +290,9 @@ class _AddItemScreenState extends State<AddItemScreen> {
                             )
                           : CircleAvatar(
                               radius: AppSize.s70,
-                              backgroundImage: FileImage(_pickedImage!),
+                              backgroundImage: FileImage(
+                                _pickedImage[0],
+                              ),
                             ),
                     ),
                     Positioned(
@@ -280,7 +306,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                         onPressed: () {
                           _showGalleryCameraPopupDialog();
                         },
-                        child: Icon(IconManager.gallery),
+                        child: const Icon(IconManager.gallery),
                       ),
                     )
                   ],

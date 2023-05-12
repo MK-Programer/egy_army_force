@@ -1,11 +1,11 @@
-import '../screens/add_item_screen.dart';
-import '../screens/all_activities_screen.dart';
-import '../screens/all_items_screen.dart';
-import '../screens/fetch_data_screen.dart';
-import '../screens/menu_bar_screen.dart';
+import '../screens/items/screens/add_item_screen.dart';
+import '../screens/activities/screens/all_activities_screen.dart';
+import '../screens/items/screens/all_items_screen.dart';
+import '../screens/fetch/screens/fetch_data_screen.dart';
+import '../screens/menu/screens/menu_bar_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
-import '../screens/item_details_screen.dart';
+import '../screens/details/screens/item_details_screen.dart';
 import 'string_manager.dart';
 
 class Routes {

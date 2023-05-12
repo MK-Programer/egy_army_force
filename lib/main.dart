@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/services.dart';
 
 import '../providers/activities_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -50,8 +51,11 @@ void main() async {
   });
   // log('User granted permission: ${settings.authorizationStatus}');
 
-  runApp(
-    const MyApp(),
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then(
+    (_) => runApp(
+      const MyApp(),
+    ),
   );
 }
 
@@ -106,6 +110,7 @@ class _MyAppState extends State<MyApp> {
                   ThemeManager.themeData(themeProvider.getDarkTheme, context),
               initialRoute: Routes.fetchDataRoute,
               onGenerateRoute: RouteGenerator.getRoute,
+              // home: BackgroundAudioWidget(),
             );
           },
         ),

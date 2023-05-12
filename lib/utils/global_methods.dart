@@ -1,6 +1,10 @@
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:uuid/uuid.dart';
 
 import '../resources/color_manager.dart';
 import '../resources/font_manager.dart';
@@ -48,7 +52,7 @@ class GlobalMethods {
                       onTap: () async {
                         await launchUrl(Uri.parse(subTitle));
                       },
-                      child: Text(
+                      child: LocaleText(
                         subTitle,
                         style: Theme.of(context)
                             .textTheme
@@ -58,7 +62,7 @@ class GlobalMethods {
                     ),
                   ],
                 )
-              : Text(
+              : LocaleText(
                   subTitle,
                   style: Theme.of(context)
                       .textTheme
@@ -84,5 +88,18 @@ class GlobalMethods {
         );
       },
     );
+  }
+
+  static Future<String> uploadImage({
+    required String folderName,
+    required File image,
+  }) async {
+    final uuid = const Uuid().v4();
+    Reference storageReference =
+        FirebaseStorage.instance.ref().child("$folderName/${uuid}jpg");
+    final UploadTask uploadTask = storageReference.putFile(image);
+    final TaskSnapshot downloadUrl = (await uploadTask);
+    String imageUri = await downloadUrl.ref.getDownloadURL();
+    return imageUri;
   }
 }

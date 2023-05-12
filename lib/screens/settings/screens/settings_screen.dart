@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/dark_theme_provider.dart';
-import '../resources/color_manager.dart';
-import '../resources/language_manager.dart';
-import '../resources/string_manager.dart';
-import '../resources/values_manager.dart';
-import '../utils/utils.dart';
+import '../../../providers/dark_theme_provider.dart';
+import '../../../resources/color_manager.dart';
+import '../../../resources/language_manager.dart';
+import '../../../resources/string_manager.dart';
+import '../../../resources/values_manager.dart';
+import '../../../utils/utils.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);

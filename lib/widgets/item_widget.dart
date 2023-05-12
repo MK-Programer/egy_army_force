@@ -39,7 +39,7 @@ class ItemWidget extends StatelessWidget {
               child: FancyShimmerImage(
                 height: size.width * AppSize.s0_45,
                 width: size.width * AppSize.s0_45,
-                imageUrl: itemModel.imageUrl,
+                imageUrl: itemModel.imageUrl[0],
                 errorWidget: Icon(
                   IconManager.iconDanger,
                   color: ColorManager.red,

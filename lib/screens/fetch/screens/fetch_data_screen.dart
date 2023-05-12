@@ -1,16 +1,16 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../providers/activities_provider.dart';
+import '../../../providers/activities_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
-import '../providers/app_version_provider.dart';
-import '../providers/items_provider.dart';
-import '../resources/route_manager.dart';
-import '../resources/string_manager.dart';
-import '../utils/global_methods.dart';
+import '../../../providers/app_version_provider.dart';
+import '../../../providers/items_provider.dart';
+import '../../../resources/route_manager.dart';
+import '../../../resources/string_manager.dart';
+import '../../../utils/global_methods.dart';
 
-final String APP_VERSION = "1.0";
+final String APP_VERSION = "1.2";
 
 class FetchDataScreen extends StatefulWidget {
   const FetchDataScreen({Key? key}) : super(key: key);
@@ -37,7 +37,9 @@ class _FetchDataScreenState extends State<FetchDataScreen> {
           // print(appVersion.version != APP_VERSION);
           if (appVersion.version != APP_VERSION) {
             errorString = AppString.anErrorOccured;
-            throw appVersion.appUrl;
+            GlobalMethods.errorDialog(
+                subTitle: appVersion.appUrl, context: context);
+            // throw appVersion.appUrl;
           } else {
             await getItems();
             await getActivities();

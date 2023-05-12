@@ -1,16 +1,16 @@
-import 'package:egy_army_force/screens/add_activities_screen.dart';
-
-import '../resources/color_manager.dart';
-import '../resources/icon_manager.dart';
-import '../resources/string_manager.dart';
-import '../screens/about_us_screen.dart';
-import '../screens/home_screen.dart';
-import '../screens/settings_screen.dart';
-import '../utils/utils.dart';
+import '../../../resources/audio_manager.dart';
+import 'package:audioplayers/audioplayers.dart';
+import '../../../resources/color_manager.dart';
+import '../../../resources/icon_manager.dart';
+import '../../../resources/string_manager.dart';
+import '../../about_us/screens/about_us_screen.dart';
+import '../../activities/screens/add_activities_screen.dart';
+import '../../home/screens/home_screen.dart';
+import '../../items/screens/add_item_screen.dart';
+import '../../settings/screens/settings_screen.dart';
+import '../../../utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
-
-import 'add_item_screen.dart';
 
 class MenuBarScreen extends StatefulWidget {
   const MenuBarScreen({Key? key}) : super(key: key);
@@ -20,6 +20,34 @@ class MenuBarScreen extends StatefulWidget {
 }
 
 class _MenuBarScreenState extends State<MenuBarScreen> {
+  final AudioPlayer? _player = AudioPlayer();
+  bool _isPlayed = true;
+
+  @override
+  void initState() {
+    _play();
+    super.initState();
+  }
+
+  void _play() {
+    _player?.play(AssetSource(AudioManager.bgAudio));
+  }
+
+  void _pause() {
+    _player?.pause();
+  }
+
+  void _checkStatus() {
+    if (_isPlayed) {
+      _isPlayed = false;
+      _pause();
+    } else {
+      _isPlayed = true;
+      _play();
+    }
+    setState(() {});
+  }
+
   final List<Map<String, dynamic>> _pages = [
     {
       'title': AppString.home,
@@ -56,6 +84,7 @@ class _MenuBarScreenState extends State<MenuBarScreen> {
   @override
   Widget build(BuildContext context) {
     bool isDark = Utils(context).getTheme;
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -82,7 +111,7 @@ class _MenuBarScreenState extends State<MenuBarScreen> {
             label: AppString.home.localize(context),
           ),
           // BottomNavigationBarItem(
-          //   icon: Icon(IconManager.plane),
+          //   icon: const Icon(IconManager.plane),
           //   label: AppString.addPlane.localize(context),
           // ),
           // BottomNavigationBarItem(
@@ -98,6 +127,11 @@ class _MenuBarScreenState extends State<MenuBarScreen> {
             label: AppString.aboutUs.localize(context),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _checkStatus,
+        tooltip: AppString.playStop.localize(context),
+        child: Icon(_isPlayed ? IconManager.play : IconManager.pause),
       ),
     );
   }

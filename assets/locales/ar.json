@@ -46,5 +46,8 @@
     "go_to_this_link": "برجاء تحميل أخر نسخة",
     "all_activities": "جميع الأنشطة",
     "comm_with_admin": "برجاء التواصل مع المسؤل",
-    "check_internet_connection": "برجاء التحقق من الأتصال بالأنترنت"
+    "check_internet_connection": "برجاء التحقق من الأتصال بالأنترنت",
+    "play_stop": "تشغيل/إيقاف",
+    "nothing_selected": "لم يتم أختيار شئ",
+    "all": "الكل"
 }

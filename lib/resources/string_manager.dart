@@ -46,6 +46,7 @@ class AppString {
   static const String downloadLatestVersion = "download_latest_version";
 
   static const String viewAll = 'view_all';
+  static const String all = 'all';
 
   static String activityNameEN = 'activity_name_en';
   static String activityDescriptionEN = 'activity_description_en';
@@ -62,4 +63,7 @@ class AppString {
   static const String allActivities = "all_activities";
   static const String communicateWithTheAdmin = "comm_with_admin";
   static const String checkInternetConnection = "check_internet_connection";
+  static const String playStop = 'play_stop';
+
+  static const String nothing_selected = "nothing_selected";
 }

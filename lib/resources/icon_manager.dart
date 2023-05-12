@@ -18,4 +18,7 @@ class IconManager {
 
   static const arrowLeft2Bold = IconlyBold.arrowLeft2;
   static const arrowRight2Bold = IconlyBold.arrowRight2;
+
+  static const play = IconlyBold.play;
+  static const pause = Icons.pause;
 }

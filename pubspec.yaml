@@ -50,6 +50,11 @@ dependencies:
   shared_preferences: ^2.0.15
   url_launcher: ^6.1.10
   firebase_messaging: ^14.2.6
+  audioplayers: ^3.0.1
+  # pinch_zoom_image_updated: ^0.2.6
+  # photo_view: ^0.14.0
+  # insta_image_viewer: ^1.0.2
+  pinch_zoom: ^1.0.0
   
 
 dev_dependencies:
@@ -92,6 +97,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/landing/
+    - assets/audio/
     - assets/locales/en.json
     - assets/locales/ar.json
 

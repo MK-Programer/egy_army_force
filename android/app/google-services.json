@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "648631165252",
+    "project_id": "egy-army-force",
+    "storage_bucket": "egy-army-force.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648631165252:android:6627b492b0ad90e5643711",
+        "android_client_info": {
+          "package_name": "com.example.egy_army_force"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "648631165252-5hq0m2mt6an36bklna6vqg6j6epv9ubs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdfz7av81fIVvuTXrT8EYdqOHoTNNaojo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "648631165252-5hq0m2mt6an36bklna6vqg6j6epv9ubs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

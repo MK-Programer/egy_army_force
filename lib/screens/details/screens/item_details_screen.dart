@@ -1,11 +1,18 @@
+import 'package:card_swiper/card_swiper.dart';
 import 'package:egy_army_force/resources/route_manager.dart';
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
+import 'package:pinch_zoom/pinch_zoom.dart';
+// import 'package:pinch_zoom_image_updated/pinch_zoom_image_updated.dart';
+// import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
-import '../providers/activities_provider.dart';
-import '../providers/items_provider.dart';
-import '../resources/language_manager.dart';
-import '../resources/values_manager.dart';
-import '../utils/utils.dart';
+import '../../../providers/activities_provider.dart';
+import '../../../providers/items_provider.dart';
+import '../../../resources/color_manager.dart';
+import '../../../resources/icon_manager.dart';
+import '../../../resources/language_manager.dart';
+import '../../../resources/values_manager.dart';
+import '../../../utils/utils.dart';
 
 class ItemDetailsScreen extends StatelessWidget {
   const ItemDetailsScreen({Key? key}) : super(key: key);
@@ -31,15 +38,36 @@ class ItemDetailsScreen extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Container(
+                SizedBox(
+                  width: double.infinity,
                   height: size.height * AppMargin.m0_4,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(AppSize.s5),
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        itemData.imageUrl,
+                  child: Swiper(
+                    itemBuilder: (BuildContext context, int index) {
+                      return Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          FancyShimmerImage(
+                            imageUrl: itemData.imageUrl[index],
+                            errorWidget: Icon(
+                              IconManager.iconDanger,
+                              color: ColorManager.red,
+                              size: AppSize.s20,
+                            ),
+                            boxFit: BoxFit.fill,
+                          ),
+                        ],
+                      );
+                    },
+                    autoplay: true,
+                    duration: AppSize.s800.toInt(),
+                    autoplayDelay: AppSize.s8000.toInt(),
+                    itemCount: itemData.imageUrl.length,
+                    pagination: SwiperPagination(
+                      alignment: Alignment.bottomCenter,
+                      builder: DotSwiperPaginationBuilder(
+                        color: ColorManager.white,
+                        activeColor: ColorManager.red,
                       ),
-                      fit: BoxFit.fill,
                     ),
                   ),
                 ),
@@ -49,7 +77,7 @@ class ItemDetailsScreen extends StatelessWidget {
                     left: AppPadding.p12,
                   ),
                   child: BackButton(
-                    color: color,
+                    color: ColorManager.red,
                   ),
                 ),
               ],
@@ -78,7 +106,7 @@ class ItemDetailsScreen extends StatelessWidget {
                     currentLang == LanguageType.ENGLISH.getValue().toUpperCase()
                         ? itemData.itemDescriptionEN
                         : itemData.itemDescriptionAR,
-                    textAlign: TextAlign.justify,
+                    textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],

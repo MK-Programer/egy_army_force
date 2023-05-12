@@ -1,12 +1,12 @@
-import '../utils/utils.dart';
+import '../../../utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
-import '../providers/activities_provider.dart';
-import '../resources/string_manager.dart';
-import '../resources/values_manager.dart';
-import '../widgets/app_bar_widget.dart';
-import '../widgets/item_widget.dart';
+import '../../../providers/activities_provider.dart';
+import '../../../resources/string_manager.dart';
+import '../../../resources/values_manager.dart';
+import '../../../widgets/app_bar_widget.dart';
+import '../../../widgets/item_widget.dart';
 
 class AllActivitiesScreen extends StatelessWidget {
   const AllActivitiesScreen({Key? key}) : super(key: key);

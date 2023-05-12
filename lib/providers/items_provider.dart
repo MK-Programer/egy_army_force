@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,6 +7,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import '../models/items_model.dart';
 import '../resources/language_manager.dart';
 import '../resources/string_manager.dart';
+import '../utils/global_methods.dart';
 import '../utils/utils.dart';
 
 class ItemsProvider with ChangeNotifier {
@@ -61,18 +63,22 @@ class ItemsProvider with ChangeNotifier {
   }
 
   void addItem({
-    required File imageUrl,
+    required List<File> imageUrl,
     required String itemNameEN,
     required String itemDescriptionEN,
     required String itemNameAR,
     required String itemDescriptionAR,
   }) async {
     final uuid = const Uuid().v4();
-    Reference storageReference =
-        FirebaseStorage.instance.ref().child("Products Images/${uuid}jpg");
-    final UploadTask uploadTask = storageReference.putFile(imageUrl);
-    final TaskSnapshot downloadUrl = (await uploadTask);
-    String imageUri = await downloadUrl.ref.getDownloadURL();
+    List<String> imageUri = [];
+    imageUri = await Future.wait(
+      imageUrl.map(
+        (image) => GlobalMethods.uploadImage(
+          folderName: 'Products Images',
+          image: image,
+        ),
+      ),
+    );
     await FirebaseFirestore.instance.collection('items').doc(uuid).set(
       {
         'id': uuid,

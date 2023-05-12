@@ -1,16 +1,16 @@
-import '../widgets/app_bar_widget.dart';
+import '../../../widgets/app_bar_widget.dart';
 
-import '../models/items_model.dart';
-import '../utils/utils.dart';
+import '../../../models/items_model.dart';
+import '../../../utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
-import '../providers/items_provider.dart';
-import '../resources/color_manager.dart';
-import '../resources/font_manager.dart';
-import '../resources/string_manager.dart';
-import '../resources/values_manager.dart';
-import '../widgets/item_widget.dart';
+import '../../../providers/items_provider.dart';
+import '../../../resources/color_manager.dart';
+import '../../../resources/font_manager.dart';
+import '../../../resources/string_manager.dart';
+import '../../../resources/values_manager.dart';
+import '../../../widgets/item_widget.dart';
 
 class AllItemsScreen extends StatefulWidget {
   const AllItemsScreen({Key? key}) : super(key: key);
