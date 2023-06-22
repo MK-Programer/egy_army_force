@@ -21,4 +21,6 @@ class IconManager {
 
   static const play = IconlyBold.play;
   static const pause = Icons.pause;
+
+  static const history = Icons.history;
 }

@@ -10,4 +10,5 @@ class ImgManager {
   // static String landing3 = '${BASE_IMG + LANDING}landing_3.jpg';
   // static String landing4 = '${BASE_IMG + LANDING}landing_4.jpg';
   static String emptyBox = '${BASE_IMG}box.png';
+  static String history = '${BASE_IMG}history.png';
 }

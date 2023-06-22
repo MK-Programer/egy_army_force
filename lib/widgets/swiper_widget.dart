@@ -35,7 +35,7 @@ class SwiperWidget extends StatelessWidget {
       duration: AppSize.s800.toInt(),
       autoplayDelay: AppSize.s8000.toInt(),
       itemCount:
-          type == 0 ? (images.length > 4 ? 4 : images.length) : images.length,
+          type == 0 ? (images.length > 6 ? 6 : images.length) : images.length,
       pagination: SwiperPagination(
         alignment: Alignment.bottomCenter,
         builder: DotSwiperPaginationBuilder(

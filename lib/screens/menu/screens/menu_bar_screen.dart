@@ -5,6 +5,7 @@ import '../../../resources/icon_manager.dart';
 import '../../../resources/string_manager.dart';
 import '../../about_us/screens/about_us_screen.dart';
 import '../../activities/screens/add_activities_screen.dart';
+import '../../history/history_screen.dart';
 import '../../home/screens/home_screen.dart';
 import '../../items/screens/add_item_screen.dart';
 import '../../settings/screens/settings_screen.dart';
@@ -66,6 +67,10 @@ class _MenuBarScreenState extends State<MenuBarScreen> {
       'body': const SettingsScreen(),
     },
     {
+      'title': AppString.history,
+      'body': const HistoryScreen(),
+    },
+    {
       'title': AppString.aboutUs,
       'body': const AboutUsScreen(),
     },
@@ -120,6 +125,10 @@ class _MenuBarScreenState extends State<MenuBarScreen> {
           // ),
           BottomNavigationBarItem(
             icon: const Icon(IconManager.settings),
+            label: AppString.settings.localize(context),
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(IconManager.history),
             label: AppString.settings.localize(context),
           ),
           BottomNavigationBarItem(

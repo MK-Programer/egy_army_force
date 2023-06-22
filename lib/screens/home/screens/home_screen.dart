@@ -53,17 +53,17 @@ class _HomeScreenState extends State<HomeScreen> {
         const SizedBox(
           height: AppMargin.m5,
         ),
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pushNamed(Routes.viewAllActivitiesRoute);
-          },
-          child: LocaleText(
-            AppString.viewAll,
-            style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  fontWeight: FontWeightManager.normal,
-                ),
-          ),
-        ),
+        // TextButton(
+        //   onPressed: () {
+        //     Navigator.of(context).pushNamed(Routes.viewAllActivitiesRoute);
+        //   },
+        //   child: LocaleText(
+        //     AppString.viewAll,
+        //     style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+        //           fontWeight: FontWeightManager.normal,
+        //         ),
+        //   ),
+        // ),
         Padding(
           padding:
               const EdgeInsets.only(left: AppPadding.p8, right: AppPadding.p8),

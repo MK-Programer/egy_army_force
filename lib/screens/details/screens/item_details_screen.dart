@@ -106,7 +106,7 @@ class ItemDetailsScreen extends StatelessWidget {
                     currentLang == LanguageType.ENGLISH.getValue().toUpperCase()
                         ? itemData.itemDescriptionEN
                         : itemData.itemDescriptionAR,
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.justify,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],

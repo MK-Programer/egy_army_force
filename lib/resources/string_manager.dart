@@ -66,4 +66,7 @@ class AppString {
   static const String playStop = 'play_stop';
 
   static const String nothing_selected = "nothing_selected";
+
+  static const String history = 'history';
+  static const String historyDescription = 'history_description';
 }
