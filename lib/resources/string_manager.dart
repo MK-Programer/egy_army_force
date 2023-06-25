@@ -69,4 +69,8 @@ class AppString {
 
   static const String history = 'history';
   static const String historyDescription = 'history_description';
+
+  static const String biography = 'biography';
+  static const String biographyDescription = 'biography_description';
+
 }
