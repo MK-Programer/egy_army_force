@@ -23,5 +23,5 @@ class IconManager {
   static const pause = Icons.pause;
 
   static const history = Icons.history;
-   static const biography = Icons.biography;
+  static const biography = Icons.man;
 }

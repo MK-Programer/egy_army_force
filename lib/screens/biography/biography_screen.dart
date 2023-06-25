@@ -21,7 +21,7 @@ class BiographyScreen extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
-                ImgManager.history,
+                ImgManager.biography,
               ),
             ),
           ),
@@ -32,7 +32,7 @@ class BiographyScreen extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.all(AppPadding.p12),
           child: LocaleText(
-            AppString.historyDescription,
+            AppString.biographyDescription,
             textAlign: TextAlign.justify,
           ),
         ),
