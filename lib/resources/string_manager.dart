@@ -73,4 +73,7 @@ class AppString {
   static const String biography = 'biography';
   static const String biographyDescription = 'biography_description';
 
+  static const String title1 = 'title1';
+  static const String title2 = 'title2';
+  static const String title3 = 'title3';
 }
